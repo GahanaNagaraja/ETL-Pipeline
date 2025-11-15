@@ -1,5 +1,4 @@
 # ETL-Pipeline
-
 ```mermaid
 flowchart LR
 
@@ -12,7 +11,7 @@ flowchart LR
     classDef viz fill:#F5EEF8,stroke:#6C3483,color:#2E0F3E,stroke-width:2px;
 
     %% ---------- BULKMAGIC PLATFORMS ----------
-    subgraph BulkMagic_Platforms
+    subgraph BulkMagic Platforms
         direction TB
         U[UHungry Platform<br/>(Food / Restaurant)]:::platform
         B[Bayangrom Platform<br/>(Apparel / Marketplace)]:::platform
@@ -30,7 +29,7 @@ flowchart LR
     W --> D[Power BI / Tableau Dashboards<br/>UHungry & Bayangrom Insights]:::viz
 
     %% ---------- ADDITIONAL DATA SOURCES ----------
-    subgraph Additional_Data_Sources
+    subgraph Additional Data Sources
         direction LR
         F[Supplier Data]:::source
         G[Inventory Data]:::source
