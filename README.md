@@ -11,25 +11,25 @@ flowchart LR
     classDef viz fill:#F5EEF8,stroke:#6C3483,color:#2E0F3E,stroke-width:2px;
 
     %% ---------- BULKMAGIC PLATFORMS ----------
-    subgraph BulkMagic Platforms
+    subgraph BulkMagic_Platforms
         direction TB
-        U[UHungry Platform<br/>(Food / Restaurant)]:::platform
-        B[Bayangrom Platform<br/>(Apparel / Marketplace)]:::platform
+        U[UHungry Platform\n(Food / Restaurant)]:::platform
+        B[Bayangrom Platform\n(Apparel / Marketplace)]:::platform
     end
 
-    U --> A1[UHungry GA4<br/>Analytics (CSV Export)]:::source
-    B --> A2[Bayangrom GA4<br/>Analytics (CSV Export)]:::source
+    U --> A1[UHungry GA4 Analytics\n(CSV Export)]:::source
+    B --> A2[Bayangrom GA4 Analytics\n(CSV Export)]:::source
 
     %% ---------- MAIN PIPELINE ----------
-    A1 --> S[(AWS S3<br/>Raw Storage)]:::storage
+    A1 --> S[(AWS S3\nRaw Storage)]:::storage
     A2 --> S
 
-    S --> T[AWS Glue / Python ETL<br/>Cleaning & Transformation]:::transform
-    T --> W[(Amazon Redshift<br/>Analytics Data Warehouse)]:::warehouse
-    W --> D[Power BI / Tableau Dashboards<br/>UHungry & Bayangrom Insights]:::viz
+    S --> T[AWS Glue / Python ETL\nCleaning & Transformation]:::transform
+    T --> W[(Amazon Redshift\nAnalytics Data Warehouse)]:::warehouse
+    W --> D[Power BI / Tableau Dashboards\n(UHungry & Bayangrom Insights)]:::viz
 
     %% ---------- ADDITIONAL DATA SOURCES ----------
-    subgraph Additional Data Sources
+    subgraph Additional_Data_Sources
         direction LR
         F[Supplier Data]:::source
         G[Inventory Data]:::source
