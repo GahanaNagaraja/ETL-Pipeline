@@ -13,29 +13,29 @@ flowchart LR
     %% ---------- BULKMAGIC PLATFORMS ----------
     subgraph BulkMagic_Platforms
         direction TB
-        U[UHungry Platform\n(Food / Restaurant)]:::platform
-        B[Bayangrom Platform\n(Apparel / Marketplace)]:::platform
+        UHungry[UHungry Platform\n(Food / Restaurant)]:::platform
+        Bayangrom[Bayangrom Platform\n(Apparel / Marketplace)]:::platform
     end
 
-    U --> A1[UHungry GA4 Analytics\n(CSV Export)]:::source
-    B --> A2[Bayangrom GA4 Analytics\n(CSV Export)]:::source
+    UHungry --> GA_U[GA4 Analytics\n(CSV Export)]:::source
+    Bayangrom --> GA_B[GA4 Analytics\n(CSV Export)]:::source
 
     %% ---------- MAIN PIPELINE ----------
-    A1 --> S[(AWS S3\nRaw Storage)]:::storage
-    A2 --> S
+    GA_U --> S3[(AWS S3\nRaw Storage)]:::storage
+    GA_B --> S3
 
-    S --> T[AWS Glue / Python ETL\nCleaning & Transformation]:::transform
-    T --> W[(Amazon Redshift\nAnalytics Data Warehouse)]:::warehouse
-    W --> D[Power BI / Tableau Dashboards\n(UHungry & Bayangrom Insights)]:::viz
+    S3 --> ETL[AWS Glue / Python ETL\nCleaning & Transformation]:::transform
+    ETL --> Redshift[(Amazon Redshift\nAnalytics Data Warehouse)]:::warehouse
+    Redshift --> Dashboards[Power BI / Tableau Dashboards\n(Platform Insights)]:::viz
 
     %% ---------- ADDITIONAL DATA SOURCES ----------
     subgraph Additional_Data_Sources
         direction LR
-        F[Supplier Data]:::source
-        G[Inventory Data]:::source
-        H[Orders Data]:::source
+        Supplier[Supplier Data]:::source
+        Inventory[Inventory Data]:::source
+        Orders[Orders Data]:::source
     end
     
-    F --> S
-    G --> S
-    H --> S
+    Supplier --> S3
+    Inventory --> S3
+    Orders --> S3
