@@ -1,10 +1,10 @@
 flowchart TB
-  UI[Streamlit Frontend] -->|POST /api/v1/analyze| API[FastAPI Backend<br/>(Orchestrator + Confidence Aggregator)]
+  UI[Streamlit Frontend] -->|POST /api/v1/analyze| API[FastAPI Backend (Orchestrator + Confidence Aggregator)]
 
   subgraph TOOLS["Tool Outputs Produced Per Job"]
-    T1[Tool 1: Market Intelligence<br/>(market sizing, trends, sources)]
-    T2[Tool 2: Competitor Intelligence<br/>(tiers, pricing, gap analysis)]
-    T3[Tool 3: Geographic Intelligence<br/>(city ranking + Census/BEA signals)]
+    T1[Tool 1: Market Intelligence (market sizing, trends, sources)]
+    T2[Tool 2: Competitor Intelligence (tiers, pricing, gap analysis)]
+    T3[Tool 3: Geographic Intelligence (city ranking + Census/BEA signals)]
   end
 
   API --> T1
