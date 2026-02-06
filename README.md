@@ -1,4 +1,5 @@
 flowchart TB
+
   %% ============================================
   %% MIA: Storage-Focused Architecture (Postgres + GCS)
   %% ============================================
